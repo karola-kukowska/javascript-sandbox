@@ -4,19 +4,19 @@ let x;
 const todo = new Object();
 
 todo.id = 1;
-todo.name = 'Buy Milk';
+todo.name = "Buy Milk";
 todo.completed = false;
 
 x = todo;
 
 // Object Nesting
 const person = {
-  address: {
-    coords: {
-      lat: 42.9384,
-      lng: -71.3232,
-    },
-  },
+	address: {
+		coords: {
+			lat: 42.9384,
+			lng: -71.3232,
+		},
+	},
 };
 
 x = person.address.coords.lat;
@@ -25,15 +25,21 @@ const obj1 = { a: 1, b: 2 };
 const obj2 = { c: 3, d: 4 };
 
 // Spread operator
+// -- spread creates a new object --
+// passing an object passes only reference
 const obj3 = { ...obj1, ...obj2 };
+obj1.a = 44;
+delete obj2.c;
+console.log(obj3);
+
 // Same as using ...
 const obj4 = Object.assign({}, obj1, obj2);
 
 // Array of objects
 const todos = [
-  { id: 1, name: 'Buy Milk' },
-  { id: 2, name: 'Pickup kids from school' },
-  { id: 3, name: 'Take out trash' },
+	{ id: 1, name: "Buy Milk" },
+	{ id: 2, name: "Pickup kids from school" },
+	{ id: 3, name: "Take out trash" },
 ];
 
 x = todos[0].name;
@@ -51,6 +57,6 @@ x = Object.values(todo);
 x = Object.entries(todo);
 
 // Check if object has a property
-x = todo.hasOwnProperty('age');
+x = todo.hasOwnProperty("age");
 
 console.log(x);

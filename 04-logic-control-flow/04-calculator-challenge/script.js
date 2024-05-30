@@ -1,25 +1,19 @@
-function calculator(num1, num2, operator) {
-  let result;
-
-  switch (operator) {
-    case '+':
-      result = num1 + num2;
-      break;
-    case '-':
-      result = num1 - num2;
-      break;
-    case '*':
-      result = num1 * num2;
-      break;
-    case '/':
-      result = num1 / num2;
-      break;
-    default:
-      result = 'Invalid Operator';
-  }
-
-  console.log(result);
-  return result;
+function calculator(a, b, operator) {
+	switch (operator) {
+		case "+":
+			return a + b;
+		case "-":
+			return a - b;
+		case "/":
+			return a / b;
+		case "*":
+			return a * b;
+		default:
+			return "Invalid operator";
+	}
 }
-
-calculator(5, 2, '&');
+console.log(calculator(5, 2, "+"));
+console.log(calculator(5, 2, "-"));
+console.log(calculator(5, 2, "*"));
+console.log(calculator(5, 9, "/"));
+console.log(calculator(5, 2, "&"));
