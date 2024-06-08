@@ -1,24 +1,38 @@
-const jokeEl = document.getElementById('joke');
-const jokeBtn = document.getElementById('joke-btn');
+const jokeEl = document.getElementById("joke");
+const jokeBtn = document.getElementById("joke-btn");
 
-const generateJoke = () => {
-  const xhr = new XMLHttpRequest();
+async function getJoke() {
+	try {
+		const res = await fetch("https://api.chucknorris.io/jokes/random");
+		if (!res.ok) {
+			throw new Error();
+		}
+		const resData = await res.json();
+		const joke = await resData.value;
+		jokeEl.innerText = joke;
+	} catch (error) {
+		jokeEl.innerText = "Oops... Something went wrong";
+	}
+}
 
-  xhr.open('GET', 'https://api.chucknorris.io/jokes/random');
+getJoke();
 
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        // console.log(JSON.parse(this.responseText).value);
-        jokeEl.innerHTML = JSON.parse(this.responseText).value;
-      } else {
-        jokeEl.innerHTML = 'Something Went Wrong (Not Funny)';
-      }
-    }
-  };
+jokeBtn.addEventListener("click", getJoke);
 
-  xhr.send();
-};
+//Alternative .then syntax
+// function getJoke() {
+// 	fetch("https://api.chucknorris.io/jokes/random")
+// 		.then((res) => {
+// 			if (!res.ok) {
+// 				throw new Error();
+// 			}
+// 			return res.json();
+// 		})
+// 		.then((data) => data.value)
+// 		.then((joke) => (jokeEl.innerText = joke))
+// 		.catch(() => (jokeEl.innerText = "Oops... Something went wrong"));
+// }
 
-jokeBtn.addEventListener('click', generateJoke);
-document.addEventListener('DOMContentLoaded', generateJoke);
+// getJoke();
+
+// jokeBtn.addEventListener("click", getJoke);
