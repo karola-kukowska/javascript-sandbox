@@ -14,5 +14,5 @@ navigator.geolocation.getCurrentPosition(function (pos) {
   marker.setLatLng([lat, lng]).update();
   map.setView([lat, lng], 13);
 
-  marker.bindPopup('<strong>Hello World</strong> <br> This is my location');
+  marker.bindPopup('<strong>Hello World</strong> <br> This is my (VPN) location');
 });

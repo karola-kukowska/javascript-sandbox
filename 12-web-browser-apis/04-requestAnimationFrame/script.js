@@ -17,8 +17,8 @@ function step(timestamp) {
     return;
   }
 
-  image.style.transform = `translateX(${elapsed / 10}px) rotate(${
-    elapsed / 10
+  image.style.transform = `translateX(${elapsed / 20}px) rotate(${
+    elapsed / 20
   }deg)`;
 
   requestAnimationFrame(step);
